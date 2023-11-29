@@ -35,10 +35,16 @@ CORS_ORIGIN=*   # Allow requests from any origin
 
 ## Tech stack
 
-- **Node.js**: JavaScript runtime for server-side development.
-- **Express.js**: Web application framework for Node.js.
-- **MongoDB**: NoSQL database for storing task data.
-- **Mongoose**: ODM (Object Data Modeling) library for MongoDB and Node.js.
+- [Node.js](https://nodejs.org/en) – JavaScript runtime for server-side development.
+
+- [Express.js](https://expressjs.com/) – Web application framework for Node.js.
+
+- [MongoDB](https://www.mongodb.com/) – NoSQL database for storing task data.
+
+- [Mongoose](https://mongoosejs.com/) – ODM (Object Data Modeling) library for MongoDB and Node.js.
+
+- [Typescript](https://www.typescriptlang.org/) – Adds static types to improved code clarity.
+
 
 ## Project Folder Structure
 
