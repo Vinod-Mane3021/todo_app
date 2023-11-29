@@ -52,22 +52,27 @@ CORS_ORIGIN=*   # Allow requests from any origin
 ```bash
 todo-app-backend/
 │
-├── config/            # Configuration files (e.g., database connection)
-├── controllers/       # Request handlers for each route
-├── middlewares/       # Custom middleware functions
-├── models/            # Mongoose models for data structures
-├── routes/            # Express.js route definitions
-├── services/          # Business logic or services
-├── utils/             # Utility or helper functions
-├── constants/         # Constant values
-├── app.js             # Express.js application setup
-├── index.js           # Entry point for the server
-├── .env               # Environment variables file
-├── .gitignore         # Git ignore file
-├── package.json       # Node.js package configuration
-├── tsconfig.json      # TypeScript configuration file
-└── README.md 
+├── src/
+│   ├── config/            # Configuration files (e.g., database connection)
+│   ├── controllers/       # Request handlers for each route
+│   ├── middlewares/       # Custom middleware functions
+│   ├── models/            # Mongoose models for data structures
+│   ├── routes/            # Express.js route definitions
+│   ├── services/          # Business logic or services
+│   ├── utils/             # Utility or helper functions
+│   └── constants/         # Constant values
+│
+├── app.js                 # Express.js application setup
+├── index.js               # Entry point for the server
+├── .env                   # Environment variables file
+├── .gitignore             # Git ignore file
+├── package.json           # Node.js package configuration
+├── tsconfig.json          # TypeScript configuration file
+└── README.md              # Readme file
+
 ```
+
+
 
 
 
