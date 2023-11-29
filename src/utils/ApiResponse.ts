@@ -13,10 +13,10 @@ class ApiResponse {
 
     /**
      * Constructs an ApiResponse object with the provided parameters.
-     * @param {number} statusCode - HTTP status code for the response.
-     * @param {string} status - Status indicator (e.g., 'SUCCESS', 'FAILED').
-     * @param {string} message - A descriptive message associated with the response.
-     * @param {Object} [data] - Optional data object to include in the response.
+     * @param statusCode - HTTP status code for the response.
+     * @param status - Status indicator (e.g., 'SUCCESS', 'FAILED').
+     * @param message - A descriptive message associated with the response.
+     * @param data - Optional data object to include in the response.
      */
     constructor(statusCode: number, status: string, message: string, data?: Object) {
         this.statusCode = statusCode,

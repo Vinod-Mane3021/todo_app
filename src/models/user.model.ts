@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
-interface IUser {
+// Define the interface representing a user document in MongoDB
+interface IUser extends Document {
     username: string,
     email: string,
     password: string,
@@ -8,6 +9,7 @@ interface IUser {
     refreshToken: string
 }
 
+// Define the Mongoose schema for the User model
 const userSchema = new Schema<IUser>(
     {
         username: {
@@ -16,7 +18,7 @@ const userSchema = new Schema<IUser>(
             unique: true,
             lowercase: true,
             trim: true,
-            index: true, // to enable searching field
+            index: true, // Enable indexing for efficient searching
         },
         email: {
             type: String,
@@ -43,6 +45,7 @@ const userSchema = new Schema<IUser>(
     }
 )
 
+// Create the User model using the defined schema
 export const UserModel = mongoose.model<IUser>("User", userSchema);
 
 
