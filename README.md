@@ -27,9 +27,9 @@ $ npm install
 ```bash
 # Port on which the server will run
 PORT=3000
-# URI for connecting to the MongoDB database
+# Url for connecting to the MongoDB database
 MONGODB_URL=your-mongodb-url
-# specifies who can access the resources on your server
+# cors specifies who can access the resources on your server
 CORS_ORIGIN=*   # Allow requests from any origin
 ```
 
