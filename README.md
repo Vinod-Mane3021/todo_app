@@ -12,7 +12,6 @@ The backend of the todo_app is built using Node.js and Express.js, with MongoDB 
 ## Setup
 
 1. **Clone the Repository:**
- 
 ```bash
 $ git clone https://github.com/Vinod-Mane3021/todo_app.git
 $ cd todo-app-backend
@@ -32,6 +31,20 @@ MONGODB_URL=your-mongodb-url
 # cors specifies who can access the resources on your server
 CORS_ORIGIN=*   # Allow requests from any origin
 ```
+4. Start the app
+```bash
+npm start
+```
+
+## Available commands
+
+Running commands with npm `npm run [command]`
+
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `start`         | Starts a development instance of the app |
+
+
 
 ## Tech stack
 
