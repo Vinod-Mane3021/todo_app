@@ -6,7 +6,7 @@ import ApiResponse from "./ApiResponse"
  * Asynchronous handler middleware for Express controllers.
  *
  * @param {Function} fun - The asynchronous controller function to be wrapped.
- * @returns {Function} An Express middleware function that handles asynchronous errors.
+ * @returns - An Express middleware function that handles asynchronous errors.
  */
 const asyncHandler = (fun: Function) => {
     // extract req, res and next from func (passed function)

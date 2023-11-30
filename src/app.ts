@@ -19,8 +19,8 @@ app.use(cookieParser())
 
 
 
-import userRouter from './routes/user.routes';
+import combineRoutes from './routes/index.routes';
 
-app.use('/api/v1/user', userRouter)
+app.use('/api/v1/', combineRoutes())
 
 export default app;

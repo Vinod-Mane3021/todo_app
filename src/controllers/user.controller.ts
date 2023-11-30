@@ -17,7 +17,7 @@ import asyncHandler from "../utils/asyncHandler";
  * @param {Response} res - Express Response object for sending the HTTP response.
  * @returns {ApiResponse} - Standardized API response.
  */
-const registerUser = asyncHandler(
+const register = asyncHandler(
   async (req: Request, res: Response) => {
     // Extracting user data from the request body
     const { username, email, password, fullName } = req.body
@@ -36,7 +36,7 @@ const registerUser = asyncHandler(
     // Creating a new user
     const createdUser = await createUser(username, email, password, fullName);
 
-    // Handling response id the user not created
+    // Handling response if the user not created
     if (!createUser) {
       return new ApiResponse(HttpStatusCode.INTERNAL_SERVER_ERROR, "INTERNAL_SERVER_ERROR", "user is not created").sendResponse(res)
     }
@@ -54,23 +54,51 @@ const registerUser = asyncHandler(
 const login = asyncHandler(
   async (req: Request, res: Response) => {
     // Extracting user data from the request body
-    const {username, email} = req.body
+    const {username, email, password} = req.body
 
     // Validating required fields
-    if (!username || !email) {
+    if ((!username || !password) && (!email || !password)) {
       return new ApiResponse(HttpStatusCode.BAD_REQUEST, "FAILED", "must required email or password").sendResponse(res)
     }
+    // find the user by username and email
+    let user;
+    if(email && !username) {
+      user = await findUserByEmail(email)
+    }
+    if(username && !email) {
+      user = await findUserByUsername(username)
+    }
 
-    
-    
+    // Handling response if the user not found in database
+    if (!user) {
+      return new ApiResponse(HttpStatusCode.NOT_FOUND, "NOT_FOUND", "user not found").sendResponse(res)
+    }
 
+    // comparing the user request password with encrypted password
+    const isPasswordCorrect = await user.isPasswordCorrect(password)
+
+    if(!isPasswordCorrect) {
+      return new ApiResponse(HttpStatusCode.BAD_REQUEST, "BAD_REQUEST", "Incorrect password").sendResponse(res)
+    }
+
+    return new ApiResponse(HttpStatusCode.OK, "SUCCESS", "Valid user credential", user).sendResponse(res);
+    
   }
 )
 
 
 
 
-export { registerUser, login }
+
+
+// const getUserById = async () => {
+//   const user = await getUserById;
+
+// }
+
+
+
+export { register, login }
 
 
 

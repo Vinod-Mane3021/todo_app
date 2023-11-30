@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { NextFunction } from "express";
 import ApiResponse from "../utils/ApiResponse";
-import HttpStatusCode from "constants/HttpStatusCodes";
+import HttpStatusCode from "../constants/HttpStatusCodes";
 
 // Define the interface representing a user document in MongoDB
 interface IUser extends Document {
