@@ -20,33 +20,11 @@ interface IUser extends Document {
 // Define the Mongoose schema for the User model
 const userSchema = new Schema<IUser>(
   {
-    username: {
-      type: String,
-      require: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-      index: true, // Enable indexing for efficient searching
-    },
-    email: {
-      type: String,
-      require: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-    },
-    password: {
-      type: String,
-      require: [true, "Password is required"],
-    },
-    fullName: {
-      type: String,
-      require: true,
-      trim: true,
-    },
-    refreshToken: {
-      type: String,
-    },
+    username: { type: String, require: true, unique: true, lowercase: true, trim: true, index: true },
+    email: { type: String, require: true, unique: true, lowercase: true, trim: true },
+    fullName: { type: String, require: true, trim: true },
+    password: { type: String, require: true,  },
+    refreshToken: { type: String }
   },
   {
     timestamps: true,

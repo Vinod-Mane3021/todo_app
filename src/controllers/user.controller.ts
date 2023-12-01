@@ -58,7 +58,7 @@ const login = asyncHandler(
 
     // Validating required fields
     if ((!username || !password) && (!email || !password)) {
-      return new ApiResponse(HttpStatusCode.BAD_REQUEST, "FAILED", "must required email or password").sendResponse(res)
+      return new ApiResponse(HttpStatusCode.BAD_REQUEST, "FAILED", "must required username, email or password").sendResponse(res)
     }
     // find the user by username and email
     let user;
@@ -82,12 +82,8 @@ const login = asyncHandler(
     }
 
     return new ApiResponse(HttpStatusCode.OK, "SUCCESS", "Valid user credential", user).sendResponse(res);
-    
   }
 )
-
-
-
 
 
 
