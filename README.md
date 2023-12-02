@@ -14,7 +14,7 @@ The backend of the todo_app is built using Node.js and Express.js, with MongoDB 
 1. **Clone the Repository:**
 ```bash
 $ git clone https://github.com/Vinod-Mane3021/todo_app.git
-$ cd todo-app-backend
+$ cd todo_app
  ```
 
 2. **Install Dependencies:**
