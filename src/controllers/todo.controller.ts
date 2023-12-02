@@ -2,8 +2,9 @@ import HttpStatusCode from "../constants/HttpStatusCodes";
 import ApiResponse from "../utils/ApiResponse";
 import asyncHandler from "../utils/asyncHandler";
 import { Request, Response } from 'express'
-import { findUserByUsername } from "../services/user.service";
-import { createNewTodo } from "../services/todo.service";
+import { findUserByRefreshToken, findUserByUsername } from "../services/user.service";
+import { createNewTodo, findTodoListByUserID } from "../services/todo.service";
+import { RequestProps } from "../middlewares/user.middlewares";
 
 /**
  * Controller to creating new todo
@@ -35,7 +36,7 @@ const createTodo = asyncHandler(
         }
 
         // Creating a new todo
-        const todo = await createNewTodo(title, description, "Pending", user._id.toString())
+        const todo = await createNewTodo(title, description, "Pending", user._id)
 
         // Checking if the todo ser is created
         if(!todo) {
@@ -46,9 +47,32 @@ const createTodo = asyncHandler(
     }
 )
 
+const getTodoByUser = asyncHandler(
+    async (req: RequestProps, res: Response) => {
+
+        const userID = req.userID;
+
+        const todos = await findTodoListByUserID(userID)
+
+        if(!todos) {
+            return new ApiResponse(HttpStatusCode.NOT_FOUND, "NOT_FOUND", "No todos found for the specified user").sendResponse(res)
+        }
+
+        // const todoString = JSON.stringify(todos, (key, value) => {
+        //     if (key === 'someCircularReferenceProperty') {
+        //         return '[Circular Reference]';
+        //     }
+        //     return value;
+        // })
+
+        return new ApiResponse(HttpStatusCode.OK, "SUCCESS", "Todos found successfully", todos).sendResponse(res)
+    }    
+) 
 
 
-export { createTodo }
+
+
+export { createTodo, getTodoByUser }
 
 
 

@@ -46,6 +46,15 @@ const findUserByUsernameAndEmail = (username: string, email: string) => {
 }
 
 /**
+ * Finds th user by refresh token
+ * @param refreshToken - the users refresh token
+ * @returns A Promise that resolves to the found user or null if not found.
+ */
+const findUserByRefreshToken = (refreshToken: string) => {
+    return UserModel.findOne({ refreshToken: refreshToken})
+}
+
+/**
  * Creates a new user in the database.
  * @param username - The new user's username.
  * @param email - The new user's email address.
@@ -70,4 +79,4 @@ const createUser = (
 /**
  * export all the function here
  */
-export { findUserById, findUserByUsername, findUserByEmail, findUsers, findUserByUsernameAndEmail, createUser };
+export { findUserById, findUserByUsername, findUserByEmail, findUsers, findUserByUsernameAndEmail, findUserByRefreshToken, createUser };

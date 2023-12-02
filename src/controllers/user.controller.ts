@@ -5,6 +5,7 @@ import {
   findUserByUsername,
   findUserByUsernameAndEmail,
   findUsers,
+  findUserByRefreshToken
 } from "../services/user.service";
 import { Request, Response } from "express";
 import ApiResponse from "../utils/ApiResponse";
@@ -80,6 +81,15 @@ const login = asyncHandler(
     if(!isPasswordCorrect) {
       return new ApiResponse(HttpStatusCode.BAD_REQUEST, "BAD_REQUEST", "Incorrect password").sendResponse(res)
     }
+
+    // generate the refresh token
+    const refreshToken = await user.generateRefreshToken();
+    // set refresh token for user and save
+    user.refreshToken = refreshToken;
+    user.save()
+
+    // set the cookie in client
+    res.cookie('token', user.refreshToken, { domain: 'localhost', path: '/' })
 
     return new ApiResponse(HttpStatusCode.OK, "SUCCESS", "Valid user credential", user).sendResponse(res);
   }

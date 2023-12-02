@@ -1,4 +1,4 @@
-import { Schema, ObjectId } from "mongoose";
+import { Schema, ObjectId,Types } from "mongoose";
 import { todoModel } from "../models/todo.model";
 
 /**
@@ -13,7 +13,7 @@ const createNewTodo = (
   title: string,
   description: string,
   status: string,
-  userId: string
+  userId: Types.ObjectId
 ) => {
   return todoModel.create({
     title: title,
@@ -23,13 +23,12 @@ const createNewTodo = (
   });
 };
 
+const findTodoListByUserID = (id: Types.ObjectId) => {
+  return todoModel.find({ userId: id })
+}
 
 
-
-
-
-
-export { createNewTodo }
+export { createNewTodo, findTodoListByUserID }
 
 
 
