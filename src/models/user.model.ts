@@ -118,3 +118,6 @@ userSchema.methods.generateRefreshToken = async function (): Promise<string> {
 
 // Create the User model using the defined schema
 export const UserModel = mongoose.model<IUser>("User", userSchema);
+
+
+

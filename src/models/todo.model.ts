@@ -1,6 +1,16 @@
 import mongoose, { Schema } from "mongoose";
 
-const todoSchema = new Schema(
+interface ITodo {
+    title: String,
+    description: String,
+    status: String,
+    userId: Schema.Types.ObjectId
+}
+
+/**
+ * Schema for todo
+ */
+const todoSchema = new Schema<ITodo>(
     {
         title: {
             type: String,
@@ -24,3 +34,6 @@ const todoSchema = new Schema(
         timestamps: true
     }
 );
+
+// Create the todo model using the defined schema
+export const todoModel = mongoose.model("Todo", todoSchema);

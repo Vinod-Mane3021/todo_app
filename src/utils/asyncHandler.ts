@@ -3,11 +3,10 @@ import { Request, Response, NextFunction } from "express"
 import ApiResponse from "./ApiResponse"
 
 /**
- * Asynchronous handler middleware for Express controllers.
- *
  * @param {Function} fun - The asynchronous controller function to be wrapped.
  * @returns - An Express middleware function that handles asynchronous errors.
  */
+
 const asyncHandler = (fun: Function) => {
     // extract req, res and next from func (passed function)
     return async (req: Request, res: Response, next: NextFunction) => {
@@ -26,3 +25,6 @@ const asyncHandler = (fun: Function) => {
 } 
 
 export default asyncHandler;
+
+
+

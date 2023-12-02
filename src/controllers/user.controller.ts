@@ -45,8 +45,8 @@ const register = asyncHandler(
     return new ApiResponse(HttpStatusCode.CREATED, "CREATED", "User Successfully registered", createdUser).sendResponse(res)
 })
 
-
 /**
+ * Controller function for user login
  * @param {Request} req - Express Request object containing the incoming HTTP request.
  * @param {Response} res - Express Response object for sending the HTTP response.
  * @returns {ApiResponse} - Standardized API response.
@@ -84,15 +84,6 @@ const login = asyncHandler(
     return new ApiResponse(HttpStatusCode.OK, "SUCCESS", "Valid user credential", user).sendResponse(res);
   }
 )
-
-
-
-// const getUserById = async () => {
-//   const user = await getUserById;
-
-// }
-
-
 
 export { register, login }
 
